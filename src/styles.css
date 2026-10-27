@@ -1,0 +1,98 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * Gestaltung C&C²-Prototyp.
+ * Elementfarben nach dem Farbcode von Tröster (WFP rot, LSS gelb, Connector grün,
+ * Funktionsabgrenzung blau), siehe docs/spezifikation_v0.1.md.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--muted);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--fail);
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: var(--border);
+  --color-ring: var(--primary);
+  --color-ring-offset-background: var(--background);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-fail: var(--fail);
+  --color-cc-wfp: var(--cc-wfp);
+  --color-cc-lss: var(--cc-lss);
+  --color-cc-c: var(--cc-c);
+  --color-cc-fd: var(--cc-fd);
+  --color-cc-grenze: var(--cc-grenze);
+  --color-cc-neben: var(--cc-neben);
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: #f4f4f1;
+  --foreground: #14181d;
+  --card: #ffffff;
+  --muted: #ecece8;
+  --muted-foreground: #646b72;
+  --border: #dcddd8;
+  --primary: #14181d;
+  --primary-foreground: #ffffff;
+  --ok: #2f7d4f;
+  --warn: #a86f00;
+  --fail: #c23b22;
+
+  /* C&C²-Elemente */
+  --cc-wfp: #d62828;
+  --cc-lss: #f2b705;
+  --cc-c: #2a9d4b;
+  --cc-fd: #1f6fd1;
+  --cc-grenze: #1a1a1a;
+  --cc-neben: #8a8a8a;
+  --cc-auswahl: #7c3aed;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+  body {
+    background: #ffffff;
+  }
+  .kein-druck {
+    display: none !important;
+  }
+  .seitenumbruch {
+    break-after: page;
+  }
+}
